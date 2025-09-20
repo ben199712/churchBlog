@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    
+
+    <!-- Page Header -->
+    <section class="py-5 bg-primary text-white" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1 class="display-4 fw-bold mb-3">Bible Knowledge Quiz</h1>
+                    <p class="lead">Test your knowledge of Scripture and Seventh-day Adventist beliefs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Selection -->
+    <section class="py-5" id="quiz-selection">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Choose Your Quiz</h2>
+                    <p class="section-subtitle">Select a quiz category to begin testing your knowledge</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="quiz-category-card" data-category="bible-basics">
+                        <div class="quiz-icon">
+                            <i class="fas fa-bible"></i>
+                        </div>
+                        <h4>Bible Basics</h4>
+                        <p class="text-muted">Test your knowledge of fundamental Bible stories, characters, and teachings.</p>
+                        <div class="quiz-stats">
+                            <small class="text-muted">10 Questions • Beginner</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="quiz-category-card" data-category="sda-doctrine">
+                        <div class="quiz-icon">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <h4>SDA Doctrine</h4>
+                        <p class="text-muted">Explore Seventh-day Adventist beliefs, teachings, and fundamental principles.</p>
+                        <div class="quiz-stats">
+                            <small class="text-muted">12 Questions • Intermediate</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="quiz-category-card" data-category="prophecy">
+                        <div class="quiz-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Bible Prophecy</h4>
+                        <p class="text-muted">Challenge yourself with questions about biblical prophecy and end-time events.</p>
+                        <div class="quiz-stats">
+                            <small class="text-muted">15 Questions • Advanced</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="quiz-category-card" data-category="sabbath">
+                        <div class="quiz-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <h4>Sabbath & Worship</h4>
+                        <p class="text-muted">Learn about the Sabbath, worship practices, and spiritual disciplines.</p>
+                        <div class="quiz-stats">
+                            <small class="text-muted">8 Questions • Beginner</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="quiz-category-card" data-category="health">
+                        <div class="quiz-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Health & Wellness</h4>
+                        <p class="text-muted">Test your knowledge of biblical health principles and lifestyle choices.</p>
+                        <div class="quiz-stats">
+                            <small class="text-muted">10 Questions • Intermediate</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="quiz-category-card" data-category="mission">
+                        <div class="quiz-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4>Mission & Service</h4>
+                        <p class="text-muted">Explore the church's mission, outreach, and service to humanity.</p>
+                        <div class="quiz-stats">
+                            <small class="text-muted">9 Questions • Intermediate</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Container (Hidden Initially) -->
+    <section class="py-5" id="quiz-container" style="display: none;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Quiz Header -->
+                    <div class="quiz-header text-center mb-4">
+                        <h2 id="quiz-title">Quiz Title</h2>
+                        <div class="quiz-progress mb-3">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" id="quiz-progress-bar"></div>
+                            </div>
+                            <small class="text-muted" id="quiz-progress-text">Question 1 of 10</small>
+                        </div>
+                        <div class="quiz-timer">
+                            <i class="fas fa-clock me-2"></i>
+                            <span id="quiz-timer">00:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Question -->
+                    <div class="quiz-question" id="quiz-question-container">
+                        <h4 id="question-text">Question will appear here</h4>
+                        <ul class="quiz-options" id="quiz-options">
+                            <!-- Options will be populated by JavaScript -->
+                        </ul>
+                    </div>
+
+                    <!-- Quiz Navigation -->
+                    <div class="quiz-navigation text-center">
+                        <button class="btn btn-outline-primary me-3" id="prev-question" style="display: none;">
+                            <i class="fas fa-arrow-left me-2"></i>Previous
+                        </button>
+                        <button class="btn btn-primary" id="next-question">
+                            Next<i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                        <button class="btn btn-success" id="finish-quiz" style="display: none;">
+                            <i class="fas fa-check me-2"></i>Finish Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Container (Hidden Initially) -->
+    <section class="py-5" id="quiz-results" style="display: none;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="quiz-results-card text-center">
+                        <div class="results-icon mb-4">
+                            <i class="fas fa-trophy" id="results-trophy"></i>
+                        </div>
+                        <h2 id="results-title">Quiz Complete!</h2>
+                        <div class="results-score mb-4">
+                            <div class="score-circle">
+                                <span id="score-percentage">0%</span>
+                            </div>
+                            <p class="text-muted">You scored <span id="score-fraction">0/0</span> correct answers</p>
+                        </div>
+                        <div class="results-message mb-4">
+                            <p id="results-message">Great job!</p>
+                        </div>
+                        <div class="results-actions">
+                            <button class="btn btn-primary me-3" id="retake-quiz">
+                                <i class="fas fa-redo me-2"></i>Retake Quiz
+                            </button>
+                            <button class="btn btn-outline-primary" id="new-quiz">
+                                <i class="fas fa-plus me-2"></i>Try Another Quiz
+                            </button>
+                        </div>
+                        
+                        <!-- Detailed Results -->
+                        <div class="detailed-results mt-5" id="detailed-results">
+                            <h4 class="mb-3">Question Review</h4>
+                            <div id="question-review">
+                                <!-- Question review will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-12">
+                    <h3>Quiz Leaderboard</h3>
+                    <p class="text-muted">Top performers in our Bible knowledge quizzes</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="leaderboard">
+                        <div class="leaderboard-item">
+                            <div class="rank">1</div>
+                            <div class="name">Sarah M.</div>
+                            <div class="score">95%</div>
+                        </div>
+                        <div class="leaderboard-item">
+                            <div class="rank">2</div>
+                            <div class="name">David K.</div>
+                            <div class="score">92%</div>
+                        </div>
+                        <div class="leaderboard-item">
+                            <div class="rank">3</div>
+                            <div class="name">Maria L.</div>
+                            <div class="score">88%</div>
+                        </div>
+                        <div class="leaderboard-item">
+                            <div class="rank">4</div>
+                            <div class="name">John P.</div>
+                            <div class="score">85%</div>
+                        </div>
+                        <div class="leaderboard-item">
+                            <div class="rank">5</div>
+                            <div class="name">Lisa R.</div>
+                            <div class="score">82%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock content %}

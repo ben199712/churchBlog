@@ -1,0 +1,439 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    
+    <!-- Hero Section Carousel -->
+    <section class="hero-carousel">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x1080/003366/FFFFFF?text=Grace+SDA+Church+Worship');">
+                        <div class="hero-overlay"></div>
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6">
+                                    <div class="hero-content text-white">
+                                        <h1 class="display-4 fw-bold mb-4">Welcome to Grace Seventh-day Adventist Church</h1>
+                                        <p class="lead mb-4">Join us in worship, fellowship, and spiritual growth as we journey together in faith and service to our community.</p>
+                                        <div class="hero-buttons">
+                                            <a href="blog.html" class="btn btn-primary btn-lg me-3">Read Our Blog</a>
+                                            <a href="about.html" class="btn btn-outline-light btn-lg">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="hero-image text-center">
+                                        <i class="fas fa-church hero-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x1080/4A90E2/FFFFFF?text=Community+Fellowship');">
+                        <div class="hero-overlay"></div>
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6">
+                                    <div class="hero-content text-white">
+                                        <h1 class="display-4 fw-bold mb-4">Experience God's Love Together</h1>
+                                        <p class="lead mb-4">Discover the joy of Christian fellowship and the power of community in our welcoming church family.</p>
+                                        <div class="hero-buttons">
+                                            <a href="livestream.html" class="btn btn-primary btn-lg me-3">Watch Live</a>
+                                            <a href="donations.html" class="btn btn-outline-light btn-lg">Support Us</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="hero-image text-center">
+                                        <i class="fas fa-users hero-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x1080/D4AF37/FFFFFF?text=Spiritual+Growth');">
+                        <div class="hero-overlay"></div>
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6">
+                                    <div class="hero-content text-white">
+                                        <h1 class="display-4 fw-bold mb-4">Grow in Faith and Knowledge</h1>
+                                        <p class="lead mb-4">Deepen your understanding of God's word through our Bible studies, prayer meetings, and spiritual guidance.</p>
+                                        <div class="hero-buttons">
+                                            <a href="quiz.html" class="btn btn-primary btn-lg me-3">Bible Quiz</a>
+                                            <a href="about.html" class="btn btn-outline-light btn-lg">Our Beliefs</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="hero-image text-center">
+                                        <i class="fas fa-bible hero-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="section-subtitle">Join us for worship and fellowship</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h4>Sabbath Service</h4>
+                        <p class="text-muted">Saturdays at 9:30 AM</p>
+                        <p>Join us for our weekly Sabbath worship service featuring inspiring music, prayer, and biblical teaching.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Bible Study</h4>
+                        <p class="text-muted">Wednesdays at 7:00 PM</p>
+                        <p>Deepen your understanding of Scripture through our weekly Bible study sessions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Prayer Meeting</h4>
+                        <p class="text-muted">Fridays at 7:30 PM</p>
+                        <p>Come together in prayer and fellowship as we seek God's guidance and blessings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Blog Posts -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Latest News & Articles</h2>
+                    <p class="section-subtitle">Stay updated with church news and spiritual insights</p>
+                </div>
+            </div>
+            <div class="row" id="latest-posts">
+                <!-- Blog posts will be loaded here via JavaScript -->
+            </div>
+            <div class="text-center mt-4">
+                <a href="blog.html" class="btn btn-primary btn-lg">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faith Journey Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Your Faith Walk</h2>
+                    <p class="section-subtitle">No matter where you are in your faith journey, there is always a next step.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="faith-step-card text-center">
+                        <div class="step-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h5>Learn About The Church</h5>
+                        <p class="text-muted">Discover our beliefs, history, and mission as Seventh-day Adventists.</p>
+                        <a href="about.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="faith-step-card text-center">
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h5>View Service Times</h5>
+                        <p class="text-muted">Join us for worship, Bible study, and fellowship throughout the week.</p>
+                        <a href="about.html#services" class="btn btn-outline-primary btn-sm">View Times</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="faith-step-card text-center">
+                        <div class="step-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5>Upcoming Programs</h5>
+                        <p class="text-muted">Get involved in our ministries and community outreach programs.</p>
+                        <a href="blog.html" class="btn btn-outline-primary btn-sm">Get Involved</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="faith-step-card text-center">
+                        <div class="step-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h5>Give Offerings</h5>
+                        <p class="text-muted">Support our ministry and mission through your generous giving.</p>
+                        <a href="donations.html" class="btn btn-outline-primary btn-sm">Give Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote of the Month -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h6 class="text-uppercase mb-3">Quote of the Month</h6>
+                    <blockquote class="blockquote">
+                        <p class="mb-4 fs-4">"Every promise of God requires your corresponding faith for it to be accomplished."</p>
+                        <footer class="blockquote-footer text-light">
+                            <cite title="Source Title">Hebrews 11:6</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Join our Services and Programs</h2>
+                    <p class="section-subtitle">Experience God uniquely in our upcoming events</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">15</span>
+                            <span class="month">Dec</span>
+                        </div>
+                        <div class="event-content">
+                            <h5>Christmas Concert</h5>
+                            <p class="text-muted">Join us for a special Christmas celebration with music and fellowship.</p>
+                            <div class="event-time">
+                                <i class="fas fa-clock me-2"></i>7:00 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">22</span>
+                            <span class="month">Dec</span>
+                        </div>
+                        <div class="event-content">
+                            <h5>Youth Winter Retreat</h5>
+                            <p class="text-muted">A weekend of spiritual growth and fellowship for our youth ministry.</p>
+                            <div class="event-time">
+                                <i class="fas fa-clock me-2"></i>All Weekend
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">29</span>
+                            <span class="month">Dec</span>
+                        </div>
+                        <div class="event-content">
+                            <h5>New Year Prayer Service</h5>
+                            <p class="text-muted">Start the new year with prayer, worship, and thanksgiving.</p>
+                            <div class="event-time">
+                                <i class="fas fa-clock me-2"></i>6:00 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="livestream.html" class="btn btn-primary btn-lg me-3">
+                    <i class="fas fa-video me-2"></i>Watch Livestream
+                </a>
+                <a href="blog.html" class="btn btn-outline-primary btn-lg">View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pastor Spotlight -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center mb-4">
+                    <img src="https://via.placeholder.com/300x400/003366/FFFFFF?text=Pastor+Robert" alt="Pastor Robert Johnson" class="img-fluid rounded shadow-custom">
+                </div>
+                <div class="col-lg-8">
+                    <h3 class="mb-3">Pastor Robert Johnson</h3>
+                    <p class="lead text-primary mb-3">Senior Pastor</p>
+                    <p class="mb-4">Pastor Robert Johnson serves at Grace Seventh-day Adventist Church as the Senior Pastor. A dedicated servant of God with over 15 years of ministry experience, his passion for biblical teaching is only surpassed by his deep love for God and His people. He is married to Sarah Johnson, and together, they have a thriving family dedicated to serving the Lord.</p>
+                    <div class="pastor-quote">
+                        <blockquote class="blockquote">
+                            <p class="mb-2">"Our mission is to establish the kingdom of God here on earth through faithful service and unwavering commitment to His word."</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">What Our Members Say</h2>
+                    <p class="section-subtitle">Hear from our church family about their experiences</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Since joining Grace SDA Church, my spiritual life has deepened significantly. The fellowship and biblical teaching have transformed my walk with God."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/003366/FFFFFF?text=SM" alt="Sarah Mitchell" class="rounded-circle me-3">
+                            <div>
+                                <h6 class="mb-0">Sarah Mitchell</h6>
+                                <small class="text-muted">Member since 2019</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The youth ministry at Grace Church has been a blessing to my children. They've grown in their faith and made lifelong friendships."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/003366/FFFFFF?text=DM" alt="David Martinez" class="rounded-circle me-3">
+                            <div>
+                                <h6 class="mb-0">David Martinez</h6>
+                                <small class="text-muted">Member since 2018</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The community outreach programs have given me opportunities to serve others and share God's love in meaningful ways."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/003366/FFFFFF?text=LC" alt="Lisa Chen" class="rounded-circle me-3">
+                            <div>
+                                <h6 class="mb-0">Lisa Chen</h6>
+                                <small class="text-muted">Member since 2020</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ministries Preview -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Fellowship. Experience. Grow</h2>
+                    <p class="section-subtitle">Be a part of our ministries, no matter where you are in the world</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="ministry-preview-card text-center">
+                        <div class="ministry-icon-large">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h4>Children's Ministry</h4>
+                        <p class="text-muted mb-3">Nurturing young hearts in faith through age-appropriate programs and activities.</p>
+                        <a href="about.html#ministries" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="ministry-preview-card text-center">
+                        <div class="ministry-icon-large">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h4>Youth Ministry</h4>
+                        <p class="text-muted mb-3">Empowering teenagers to develop strong relationships with God and each other.</p>
+                        <a href="about.html#ministries" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="ministry-preview-card text-center">
+                        <div class="ministry-icon-large">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h4>Community Service</h4>
+                        <p class="text-muted mb-3">Reaching out to our community with love, compassion, and practical help.</p>
+                        <a href="about.html#ministries" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3 class="mb-3">Join Our Church Family</h3>
+                    <p class="mb-0">Experience the love, fellowship, and spiritual growth that comes from being part of our Seventh-day Adventist community.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="about.html" class="btn btn-light btn-lg">Get Involved</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+{% endblock content %}

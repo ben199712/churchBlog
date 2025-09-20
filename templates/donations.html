@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+        <!-- Page Header -->
+    <section class="py-5 bg-primary text-white" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1 class="display-4 fw-bold mb-3">Support Our Ministry</h1>
+                    <p class="lead">Your generous donations help us spread God's love and serve our community</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Options -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Donation Form -->
+                <div class="col-lg-8">
+                    <div class="donation-form">
+                        <h3 class="mb-4">Make a Donation</h3>
+                        
+                        <!-- Donation Type Selection -->
+                        <div class="mb-4">
+                            <label class="form-label">Donation Type</label>
+                            <div class="row">
+                                <div class="col-md-4 mb-2">
+                                    <div class="donation-type-card" data-type="tithe">
+                                        <i class="fas fa-church mb-2"></i>
+                                        <h5>Tithe</h5>
+                                        <p class="small text-muted">10% of your income</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <div class="donation-type-card" data-type="offering">
+                                        <i class="fas fa-gift mb-2"></i>
+                                        <h5>Offering</h5>
+                                        <p class="small text-muted">Freewill offering</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <div class="donation-type-card" data-type="special">
+                                        <i class="fas fa-heart mb-2"></i>
+                                        <h5>Special</h5>
+                                        <p class="small text-muted">Special projects</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Amount Selection -->
+                        <div class="mb-4">
+                            <label class="form-label">Donation Amount</label>
+                            <div class="donation-amounts">
+                                <div class="donation-amount" data-amount="25">$25</div>
+                                <div class="donation-amount" data-amount="50">$50</div>
+                                <div class="donation-amount" data-amount="100">$100</div>
+                                <div class="donation-amount" data-amount="250">$250</div>
+                                <div class="donation-amount" data-amount="500">$500</div>
+                                <div class="donation-amount" data-amount="custom">Custom</div>
+                            </div>
+                            <div class="mt-3" id="custom-amount" style="display: none;">
+                                <input type="number" class="form-control" placeholder="Enter custom amount" id="custom-amount-input" min="1">
+                            </div>
+                        </div>
+
+                        <!-- Frequency -->
+                        <div class="mb-4">
+                            <label class="form-label">Frequency</label>
+                            <select class="form-control" id="donation-frequency">
+                                <option value="one-time">One-time</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                            </select>
+                        </div>
+
+                        <!-- Donor Information -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="first-name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="last-name" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Phone Number (Optional)</label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+
+                        <!-- Comments -->
+                        <div class="mb-4">
+                            <label class="form-label">Comments (Optional)</label>
+                            <textarea class="form-control" rows="3" id="comments" placeholder="Any special instructions or prayer requests..."></textarea>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="mb-4">
+                            <label class="form-label">Payment Method</label>
+                            <div class="payment-methods">
+                                <div class="payment-method active" data-method="card">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Credit/Debit Card</span>
+                                </div>
+                                <div class="payment-method" data-method="bank">
+                                    <i class="fas fa-university"></i>
+                                    <span>Bank Transfer</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Details (shown by default) -->
+                        <div id="card-details">
+                            <div class="mb-3">
+                                <label class="form-label">Card Number</label>
+                                <input type="text" class="form-control" id="card-number" placeholder="1234 5678 9012 3456">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label">Expiry Date</label>
+                                    <input type="text" class="form-control" id="expiry-date" placeholder="MM/YY">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">CVV</label>
+                                    <input type="text" class="form-control" id="cvv" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bank Transfer Details (hidden by default) -->
+                        <div id="bank-details" style="display: none;">
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-info-circle me-2"></i>Bank Transfer Information</h6>
+                                <p class="mb-2"><strong>Bank:</strong> First National Bank</p>
+                                <p class="mb-2"><strong>Account Name:</strong> Grace SDA Church</p>
+                                <p class="mb-2"><strong>Account Number:</strong> 1234567890</p>
+                                <p class="mb-0"><strong>Routing Number:</strong> 987654321</p>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-lg" id="donate-btn">
+                                <i class="fas fa-heart me-2"></i>
+                                Make Donation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donation Info Sidebar -->
+                <div class="col-lg-4">
+                    <div class="donation-info">
+                        <h4 class="mb-4">How Your Donation Helps</h4>
+                        
+                        <div class="donation-impact mb-4">
+                            <div class="impact-item">
+                                <i class="fas fa-church text-primary"></i>
+                                <div>
+                                    <h6>Church Operations</h6>
+                                    <p class="small text-muted">Supporting our worship services, facilities, and ministry programs</p>
+                                </div>
+                            </div>
+                            <div class="impact-item">
+                                <i class="fas fa-users text-primary"></i>
+                                <div>
+                                    <h6>Community Outreach</h6>
+                                    <p class="small text-muted">Feeding the hungry, clothing the needy, and serving our community</p>
+                                </div>
+                            </div>
+                            <div class="impact-item">
+                                <i class="fas fa-graduation-cap text-primary"></i>
+                                <div>
+                                    <h6>Education & Youth</h6>
+                                    <p class="small text-muted">Supporting our Sabbath School, youth programs, and educational initiatives</p>
+                                </div>
+                            </div>
+                            <div class="impact-item">
+                                <i class="fas fa-globe text-primary"></i>
+                                <div>
+                                    <h6>Mission Work</h6>
+                                    <p class="small text-muted">Spreading the gospel locally and supporting global mission efforts</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="donation-security">
+                            <h5 class="mb-3">Secure & Safe</h5>
+                            <div class="security-features">
+                                <div class="security-item">
+                                    <i class="fas fa-shield-alt text-success"></i>
+                                    <span>SSL Encrypted</span>
+                                </div>
+                                <div class="security-item">
+                                    <i class="fas fa-lock text-success"></i>
+                                    <span>Secure Processing</span>
+                                </div>
+                                <div class="security-item">
+                                    <i class="fas fa-user-shield text-success"></i>
+                                    <span>Privacy Protected</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="donation-receipt mt-4">
+                            <div class="alert alert-light">
+                                <h6><i class="fas fa-receipt me-2"></i>Tax Deductible</h6>
+                                <p class="small mb-0">All donations are tax-deductible. You'll receive a receipt for your records.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Donations (Anonymous) -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-12">
+                    <h3>Recent Blessings</h3>
+                    <p class="text-muted">Thank you to our generous donors (amounts shown anonymously)</p>
+                </div>
+            </div>
+            <div class="row" id="recent-donations">
+                <!-- Recent donations will be loaded here -->
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+    
+

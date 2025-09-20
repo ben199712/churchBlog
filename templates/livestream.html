@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+        <!-- Page Header -->
+    <section class="py-5 bg-primary text-white" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1 class="display-4 fw-bold mb-3">Watch Live Services</h1>
+                    <p class="lead">Join us for worship, prayer, and fellowship from anywhere in the world</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Stream Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Main Live Stream -->
+                <div class="col-lg-8 mb-4">
+                    <div class="livestream-container">
+                        <div class="livestream-header">
+                            <div class="live-indicator">
+                                <span class="live-dot"></span>
+                                <span class="live-text">LIVE NOW</span>
+                            </div>
+                            <h3 class="livestream-title">Sabbath Morning Service</h3>
+                            <p class="livestream-subtitle">Join us for worship, prayer, and biblical teaching</p>
+                        </div>
+                        
+                        <!-- YouTube Embed -->
+                        <div class="video-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=0&controls=1&showinfo=1&rel=0" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                class="youtube-embed">
+                            </iframe>
+                        </div>
+                        
+                        <!-- Stream Controls -->
+                        <div class="stream-controls">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <div class="stream-info">
+                                        <span class="viewer-count">
+                                            <i class="fas fa-eye me-2"></i>
+                                            <span id="viewer-count">247</span> watching
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-md-end">
+                                    <div class="stream-actions">
+                                        <button class="btn btn-outline-primary btn-sm me-2" id="share-btn">
+                                            <i class="fas fa-share me-1"></i>Share
+                                        </button>
+                                        <button class="btn btn-outline-primary btn-sm" id="chat-btn">
+                                            <i class="fas fa-comments me-1"></i>Chat
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Service Schedule -->
+                    <div class="schedule-card mb-4">
+                        <h4 class="mb-3">
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            Service Schedule
+                        </h4>
+                        <div class="schedule-list">
+                            <div class="schedule-item">
+                                <div class="schedule-time">Sabbath School</div>
+                                <div class="schedule-desc">9:30 AM</div>
+                            </div>
+                            <div class="schedule-item active">
+                                <div class="schedule-time">Main Service</div>
+                                <div class="schedule-desc">11:00 AM - LIVE NOW</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">Prayer Meeting</div>
+                                <div class="schedule-desc">Wednesday 7:00 PM</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">Bible Study</div>
+                                <div class="schedule-desc">Wednesday 7:30 PM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Events -->
+                    <div class="events-card mb-4">
+                        <h4 class="mb-3">
+                            <i class="fas fa-clock me-2"></i>
+                            Upcoming Events
+                        </h4>
+                        <div class="event-list">
+                            <div class="event-item">
+                                <div class="event-time">Today, 2:00 PM</div>
+                                <div class="event-title">Youth Fellowship</div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-time">Tomorrow, 7:00 PM</div>
+                                <div class="event-title">Prayer Meeting</div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-time">Friday, 7:30 PM</div>
+                                <div class="event-title">Friday Night Service</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prayer Requests -->
+                    <div class="prayer-card">
+                        <h4 class="mb-3">
+                            <i class="fas fa-pray me-2"></i>
+                            Prayer Requests
+                        </h4>
+                        <p class="text-muted mb-3">Submit your prayer requests and we'll pray for you during the service.</p>
+                        <form id="prayer-form">
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="3" placeholder="Share your prayer request..." id="prayer-request"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm w-100">
+                                <i class="fas fa-paper-plane me-1"></i>Submit Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Sermons -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Recent Sermons</h2>
+                    <p class="section-subtitle">Catch up on recent messages and teachings</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail">
+                            <img src="https://via.placeholder.com/400x225/003366/FFFFFF?text=Sermon+1" alt="Sermon Thumbnail" class="img-fluid">
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="sermon-content">
+                            <h5>The Power of Faith</h5>
+                            <p class="text-muted mb-2">Pastor Robert Johnson • December 8, 2024</p>
+                            <p class="sermon-excerpt">Discover how faith can move mountains and transform your life...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail">
+                            <img src="https://via.placeholder.com/400x225/4A90E2/FFFFFF?text=Sermon+2" alt="Sermon Thumbnail" class="img-fluid">
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="sermon-content">
+                            <h5>Walking in Love</h5>
+                            <p class="text-muted mb-2">Pastor Sarah Mitchell • December 1, 2024</p>
+                            <p class="sermon-excerpt">Learn how to walk in love and show God's love to others...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail">
+                            <img src="https://via.placeholder.com/400x225/D4AF37/FFFFFF?text=Sermon+3" alt="Sermon Thumbnail" class="img-fluid">
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="sermon-content">
+                            <h5>Hope in Difficult Times</h5>
+                            <p class="text-muted mb-2">Pastor David Martinez • November 24, 2024</p>
+                            <p class="sermon-excerpt">Finding hope and strength when facing life's challenges...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary btn-lg">View All Sermons</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Chat Section -->
+    <section class="py-5" id="chat-section" style="display: none;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <h4>
+                                <i class="fas fa-comments me-2"></i>
+                                Live Chat
+                            </h4>
+                            <button class="btn btn-sm btn-outline-secondary" id="close-chat">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="chat-message">
+                                <div class="message-author">Sarah M.</div>
+                                <div class="message-text">Praise God! This message is so powerful today.</div>
+                                <div class="message-time">2 minutes ago</div>
+                            </div>
+                            <div class="chat-message">
+                                <div class="message-author">David K.</div>
+                                <div class="message-text">Amen! Thank you Pastor for this word.</div>
+                                <div class="message-time">1 minute ago</div>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Type your message..." id="chat-input">
+                                <button class="btn btn-primary" type="button" id="send-message">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

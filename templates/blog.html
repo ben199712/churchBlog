@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block content %}
+
+         <!-- Page Header -->
+    <section class="py-5 bg-primary text-white" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1 class="display-4 fw-bold mb-3">Blog & News</h1>
+                    <p class="lead">Stay updated with the latest church news, spiritual insights, and community announcements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <ul class="nav nav-pills justify-content-center" id="blog-tabs">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#all-posts">All Posts</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#church-news">Church News</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#spiritual-insights">Spiritual Insights</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#announcements">Announcements</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Featured Post -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="featured-post bg-white rounded-3 shadow-custom p-4">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8">
+                                <div class="featured-content">
+                                    <span class="badge bg-primary mb-2">Featured</span>
+                                    <h2 class="mb-3">The Power of Sabbath Rest in Our Modern World</h2>
+                                    <p class="text-muted mb-3">Discover how observing the Sabbath can bring peace, renewal, and deeper connection with God in our fast-paced society.</p>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/40x40/003366/FFFFFF?text=PR" alt="Pastor" class="rounded-circle me-3">
+                                        <div>
+                                            <strong>Pastor Robert Johnson</strong><br>
+                                            <small class="text-muted">December 15, 2024</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="https://via.placeholder.com/400x250/003366/FFFFFF?text=Sabbath+Rest" alt="Sabbath Rest" class="img-fluid rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Posts Grid -->
+            <div class="row" id="blog-posts">
+                <!-- Blog posts will be loaded here via JavaScript -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-5">
+                <button class="btn btn-primary btn-lg" id="load-more-btn">Load More Posts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h3 class="mb-3">Stay Connected</h3>
+                    <p class="text-muted mb-4">Subscribe to our newsletter to receive the latest church updates, spiritual insights, and community news directly in your inbox.</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your email address" id="newsletter-email">
+                                <button class="btn btn-primary" type="button" id="subscribe-btn">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+   
