@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <!-- Featured Post -->
+            {% if featured %}
             <div class="row mb-5">
                 <div class="col-12">
                     <div class="featured-post bg-white rounded-3 shadow-custom p-4">
@@ -46,56 +46,75 @@
                             <div class="col-lg-8">
                                 <div class="featured-content">
                                     <span class="badge bg-primary mb-2">Featured</span>
-                                    <h2 class="mb-3">The Power of Sabbath Rest in Our Modern World</h2>
-                                    <p class="text-muted mb-3">Discover how observing the Sabbath can bring peace, renewal, and deeper connection with God in our fast-paced society.</p>
+                                    <h2 class="mb-3">{{ featured.title }}</h2>
+                                    <p class="text-muted mb-3">{{ featured.content|truncatewords:40 }}</p>
                                     <div class="d-flex align-items-center">
-                                        <img src="https://via.placeholder.com/40x40/003366/FFFFFF?text=PR" alt="Pastor" class="rounded-circle me-3">
                                         <div>
-                                            <strong>Pastor Robert Johnson</strong><br>
-                                            <small class="text-muted">December 15, 2024</small>
+                                            <strong>{{ featured.author }}</strong><br>
+                                            <small class="text-muted">{{ featured.created_at|date:"F d, Y" }}</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <img src="https://via.placeholder.com/400x250/003366/FFFFFF?text=Sabbath+Rest" alt="Sabbath Rest" class="img-fluid rounded">
+                                {% if featured.image %}
+                                <img src="{{ featured.image.url }}" alt="{{ featured.title }}" class="img-fluid rounded">
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endif %}
 
             <!-- Blog Posts Grid -->
             <div class="row" id="blog-posts">
-                <!-- Blog posts will be loaded here via JavaScript -->
+                {% for post in page_obj %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        {% if post.image %}
+                        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <span class="badge bg-light text-dark mb-2">{{ post.category.name }}</span>
+                            <h5 class="card-title"><a href="{% url 'blog_detail' slug=post.slug %}">{{ post.title }}</a></h5>
+                            <p class="card-text text-muted">{{ post.content|truncatewords:22 }}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between small text-muted">
+                            <span>{{ post.author }}</span>
+                            <span>{{ post.created_at|date:"M d, Y" }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center text-muted py-5">No posts yet.</div>
+                {% endfor %}
             </div>
 
-            <!-- Load More Button -->
             <div class="text-center mt-5">
-                <button class="btn btn-primary btn-lg" id="load-more-btn">Load More Posts</button>
+                {% if page_obj.has_previous %}
+                    <a class="btn btn-outline-primary me-2" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a class="btn btn-primary" href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Signup -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h3 class="mb-3">Stay Connected</h3>
-                    <p class="text-muted mb-4">Subscribe to our newsletter to receive the latest church updates, spiritual insights, and community news directly in your inbox.</p>
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="input-group">
-                                <input type="email" class="form-control" placeholder="Enter your email address" id="newsletter-email">
-                                <button class="btn btn-primary" type="button" id="subscribe-btn">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-8">
+                    <form action="{% url 'subscribe_newsletter' %}" method="post" class="d-flex gap-2">
+                        {% csrf_token %}
+                        {{ newsletter_form.email }}
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
 {% endblock content %}
-   
+    

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="py-5" style="margin-top: 80px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center mb-4">
+                    <h2>{{ quiz.title }}</h2>
+                    <div class="text-muted">Category: {{ quiz.category.name }} • {{ quiz.get_difficulty_display }}</div>
+                </div>
+                <div class="bg-white p-4 rounded shadow-sm">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        {% for q in questions %}
+                        <div class="mb-4">
+                            <h5 class="mb-3">Q{{ forloop.counter }}. {{ q.question_text }}</h5>
+                            <ul class="list-unstyled">
+                                {% for a in q.answers.all %}
+                                <li class="mb-2">
+                                    <label class="d-flex align-items-center">
+                                        <input type="radio" name="q{{ q.id }}" class="form-check-input me-2" value="{{ a.id }}">
+                                        <span>{{ a.answer_text }}</span>
+                                    </label>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% if q.explanation %}
+                            <div class="small text-muted">Hint: {{ q.explanation }}</div>
+                            {% endif %}
+                        </div>
+                        <hr>
+                        {% empty %}
+                        <div class="text-muted">No questions in this quiz yet.</div>
+                        {% endfor %}
+                        <div class="text-center">
+                            <a href="{% url 'quiz_home' %}" class="btn btn-outline-primary me-2">Back to Quizzes</a>
+                            <button class="btn btn-primary" type="submit">Submit Answers</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+

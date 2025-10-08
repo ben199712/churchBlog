@@ -10,7 +10,7 @@ class BannerSection(models.Model):
         return self.title
     
 
-class Servie(models.Model):
+class Service(models.Model):
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=100)
     description = models.TextField()

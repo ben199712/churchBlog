@@ -28,83 +28,25 @@
             </div>
             
             <div class="row">
+                {% for quiz in quizzes %}
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="quiz-category-card" data-category="bible-basics">
+                    <div class="quiz-category-card">
                         <div class="quiz-icon">
                             <i class="fas fa-bible"></i>
                         </div>
-                        <h4>Bible Basics</h4>
-                        <p class="text-muted">Test your knowledge of fundamental Bible stories, characters, and teachings.</p>
+                        <h4>{{ quiz.title }}</h4>
+                        <p class="text-muted">Category: {{ quiz.category.name }} • {{ quiz.get_difficulty_display }}</p>
                         <div class="quiz-stats">
-                            <small class="text-muted">10 Questions • Beginner</small>
+                            <small class="text-muted">{{ quiz.questions.count }} Questions</small>
+                        </div>
+                        <div class="mt-2">
+                            <a class="btn btn-primary btn-sm" href="{% url 'quiz_detail' quiz.id %}">Take Quiz</a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="quiz-category-card" data-category="sda-doctrine">
-                        <div class="quiz-icon">
-                            <i class="fas fa-church"></i>
-                        </div>
-                        <h4>SDA Doctrine</h4>
-                        <p class="text-muted">Explore Seventh-day Adventist beliefs, teachings, and fundamental principles.</p>
-                        <div class="quiz-stats">
-                            <small class="text-muted">12 Questions • Intermediate</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="quiz-category-card" data-category="prophecy">
-                        <div class="quiz-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h4>Bible Prophecy</h4>
-                        <p class="text-muted">Challenge yourself with questions about biblical prophecy and end-time events.</p>
-                        <div class="quiz-stats">
-                            <small class="text-muted">15 Questions • Advanced</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="quiz-category-card" data-category="sabbath">
-                        <div class="quiz-icon">
-                            <i class="fas fa-calendar-day"></i>
-                        </div>
-                        <h4>Sabbath & Worship</h4>
-                        <p class="text-muted">Learn about the Sabbath, worship practices, and spiritual disciplines.</p>
-                        <div class="quiz-stats">
-                            <small class="text-muted">8 Questions • Beginner</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="quiz-category-card" data-category="health">
-                        <div class="quiz-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h4>Health & Wellness</h4>
-                        <p class="text-muted">Test your knowledge of biblical health principles and lifestyle choices.</p>
-                        <div class="quiz-stats">
-                            <small class="text-muted">10 Questions • Intermediate</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="quiz-category-card" data-category="mission">
-                        <div class="quiz-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h4>Mission & Service</h4>
-                        <p class="text-muted">Explore the church's mission, outreach, and service to humanity.</p>
-                        <div class="quiz-stats">
-                            <small class="text-muted">9 Questions • Intermediate</small>
-                        </div>
-                    </div>
-                </div>
+                {% empty %}
+                <div class="col-12 text-center text-muted">No quizzes available.</div>
+                {% endfor %}
             </div>
         </div>
     </section>

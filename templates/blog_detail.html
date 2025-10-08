@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="py-5" style="margin-top: 80px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <article class="bg-white p-4 rounded shadow-sm">
+                    <span class="badge bg-light text-dark mb-2">{{ post.category.name }}</span>
+                    <h1 class="mb-3">{{ post.title }}</h1>
+                    <div class="text-muted mb-4 small">By {{ post.author }} • {{ post.created_at|date:"F d, Y" }}</div>
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid rounded mb-4">
+                    {% endif %}
+                    <div class="post-content">{{ post.content|linebreaks }}</div>
+                </article>
+
+                <section class="mt-5">
+                    <h4 class="mb-3">Comments</h4>
+                    <div class="mb-4">
+                        {% for c in post.comments.all %}
+                        {% if c.approved %}
+                        <div class="border rounded p-3 mb-3">
+                            <div class="small text-muted mb-1">{{ c.name }} • {{ c.created_at|date:"M d, Y H:i" }}</div>
+                            <div>{{ c.content|linebreaks }}</div>
+                        </div>
+                        {% endif %}
+                        {% empty %}
+                        <div class="text-muted">No comments yet.</div>
+                        {% endfor %}
+                    </div>
+                    <div class="card p-3">
+                        <h5 class="mb-3">Leave a comment</h5>
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                {{ comment_form.name }}
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                {{ comment_form.email }}
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Comment</label>
+                                {{ comment_form.content }}
+                            </div>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <aside>
+                    <div class="bg-white p-3 rounded shadow-sm mb-4">
+                        <h5>Recent Posts</h5>
+                        <ul class="list-unstyled mb-0 mt-3">
+                            {% for rp in recent_posts %}
+                            <li class="mb-2"><a href="{% url 'blog_detail' slug=rp.slug %}">{{ rp.title }}</a></li>
+                            {% empty %}
+                            <li class="text-muted">No recent posts.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    </section>
+{% endblock content %}
+
+

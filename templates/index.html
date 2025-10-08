@@ -7,24 +7,24 @@
     <section class="hero-carousel">
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                {% for b in banners %}
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
             </div>
             <div class="carousel-inner">
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x1080/003366/FFFFFF?text=Grace+SDA+Church+Worship');">
+                {% for b in banners %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="hero-slide" style="background-image: url('{% if b.image %}{{ b.image.url }}{% endif %}');">
                         <div class="hero-overlay"></div>
                         <div class="container">
                             <div class="row align-items-center min-vh-100">
                                 <div class="col-lg-6">
                                     <div class="hero-content text-white">
-                                        <h1 class="display-4 fw-bold mb-4">Welcome to Grace Seventh-day Adventist Church</h1>
-                                        <p class="lead mb-4">Join us in worship, fellowship, and spiritual growth as we journey together in faith and service to our community.</p>
+                                        <h1 class="display-4 fw-bold mb-4">{{ b.title }}</h1>
+                                        <p class="lead mb-4">{{ b.subtitle }}</p>
                                         <div class="hero-buttons">
-                                            <a href="blog.html" class="btn btn-primary btn-lg me-3">Read Our Blog</a>
-                                            <a href="about.html" class="btn btn-outline-light btn-lg">Learn More</a>
+                                            <a href="{% url 'blog' %}" class="btn btn-primary btn-lg me-3">Read Our Blog</a>
+                                            <a href="{% url 'home' %}#about" class="btn btn-outline-light btn-lg">Learn More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -37,58 +37,7 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-                    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x1080/4A90E2/FFFFFF?text=Community+Fellowship');">
-                        <div class="hero-overlay"></div>
-                        <div class="container">
-                            <div class="row align-items-center min-vh-100">
-                                <div class="col-lg-6">
-                                    <div class="hero-content text-white">
-                                        <h1 class="display-4 fw-bold mb-4">Experience God's Love Together</h1>
-                                        <p class="lead mb-4">Discover the joy of Christian fellowship and the power of community in our welcoming church family.</p>
-                                        <div class="hero-buttons">
-                                            <a href="livestream.html" class="btn btn-primary btn-lg me-3">Watch Live</a>
-                                            <a href="donations.html" class="btn btn-outline-light btn-lg">Support Us</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="hero-image text-center">
-                                        <i class="fas fa-users hero-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="carousel-item">
-                    <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x1080/D4AF37/FFFFFF?text=Spiritual+Growth');">
-                        <div class="hero-overlay"></div>
-                        <div class="container">
-                            <div class="row align-items-center min-vh-100">
-                                <div class="col-lg-6">
-                                    <div class="hero-content text-white">
-                                        <h1 class="display-4 fw-bold mb-4">Grow in Faith and Knowledge</h1>
-                                        <p class="lead mb-4">Deepen your understanding of God's word through our Bible studies, prayer meetings, and spiritual guidance.</p>
-                                        <div class="hero-buttons">
-                                            <a href="quiz.html" class="btn btn-primary btn-lg me-3">Bible Quiz</a>
-                                            <a href="about.html" class="btn btn-outline-light btn-lg">Our Beliefs</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="hero-image text-center">
-                                        <i class="fas fa-bible hero-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -111,36 +60,18 @@
                 </div>
             </div>
             <div class="row">
+                {% for s in services %}
                 <div class="col-md-4 mb-4">
                     <div class="service-card text-center">
                         <div class="service-icon">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="{{ s.icon }}"></i>
                         </div>
-                        <h4>Sabbath Service</h4>
-                        <p class="text-muted">Saturdays at 9:30 AM</p>
-                        <p>Join us for our weekly Sabbath worship service featuring inspiring music, prayer, and biblical teaching.</p>
+                        <h4>{{ s.title }}</h4>
+                        <p class="text-muted">{{ s.subtitle }}</p>
+                        <p>{{ s.description }}</p>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="service-card text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4>Bible Study</h4>
-                        <p class="text-muted">Wednesdays at 7:00 PM</p>
-                        <p>Deepen your understanding of Scripture through our weekly Bible study sessions.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="service-card text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h4>Prayer Meeting</h4>
-                        <p class="text-muted">Fridays at 7:30 PM</p>
-                        <p>Come together in prayer and fellowship as we seek God's guidance and blessings.</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -155,7 +86,24 @@
                 </div>
             </div>
             <div class="row" id="latest-posts">
-                <!-- Blog posts will be loaded here via JavaScript -->
+                {% for post in latest_posts %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        {% if post.image %}
+                        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <span class="badge bg-light text-dark mb-2">{{ post.category.name }}</span>
+                            <h5 class="card-title"><a href="{% url 'blog_detail' slug=post.slug %}">{{ post.title }}</a></h5>
+                            <p class="card-text text-muted">{{ post.content|truncatewords:22 }}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between small text-muted">
+                            <span>{{ post.author }}</span>
+                            <span>{{ post.created_at|date:"M d, Y" }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
             <div class="text-center mt-4">
                 <a href="blog.html" class="btn btn-primary btn-lg">View All Articles</a>
@@ -244,51 +192,23 @@
                 </div>
             </div>
             <div class="row">
+                {% for e in events %}
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="event-card">
                         <div class="event-date">
-                            <span class="day">15</span>
-                            <span class="month">Dec</span>
+                            <span class="day">{{ e.day }}</span>
+                            <span class="month">{{ e.month }}</span>
                         </div>
                         <div class="event-content">
-                            <h5>Christmas Concert</h5>
-                            <p class="text-muted">Join us for a special Christmas celebration with music and fellowship.</p>
+                            <h5>{{ e.title }}</h5>
+                            <p class="text-muted">{{ e.description|truncatewords:22 }}</p>
                             <div class="event-time">
-                                <i class="fas fa-clock me-2"></i>7:00 PM
+                                <i class="fas fa-clock me-2"></i>{{ e.time }}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="event-card">
-                        <div class="event-date">
-                            <span class="day">22</span>
-                            <span class="month">Dec</span>
-                        </div>
-                        <div class="event-content">
-                            <h5>Youth Winter Retreat</h5>
-                            <p class="text-muted">A weekend of spiritual growth and fellowship for our youth ministry.</p>
-                            <div class="event-time">
-                                <i class="fas fa-clock me-2"></i>All Weekend
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="event-card">
-                        <div class="event-date">
-                            <span class="day">29</span>
-                            <span class="month">Dec</span>
-                        </div>
-                        <div class="event-content">
-                            <h5>New Year Prayer Service</h5>
-                            <p class="text-muted">Start the new year with prayer, worship, and thanksgiving.</p>
-                            <div class="event-time">
-                                <i class="fas fa-clock me-2"></i>6:00 PM
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="text-center mt-4">
                 <a href="livestream.html" class="btn btn-primary btn-lg me-3">
@@ -304,12 +224,16 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 text-center mb-4">
-                    <img src="https://via.placeholder.com/300x400/003366/FFFFFF?text=Pastor+Robert" alt="Pastor Robert Johnson" class="img-fluid rounded shadow-custom">
+                    {% if pastor and pastor.image %}
+                    <img src="{{ pastor.image }}" alt="{{ pastor.name }}" class="img-fluid rounded shadow-custom">
+                    {% endif %}
                 </div>
                 <div class="col-lg-8">
-                    <h3 class="mb-3">Pastor Robert Johnson</h3>
-                    <p class="lead text-primary mb-3">Senior Pastor</p>
-                    <p class="mb-4">Pastor Robert Johnson serves at Grace Seventh-day Adventist Church as the Senior Pastor. A dedicated servant of God with over 15 years of ministry experience, his passion for biblical teaching is only surpassed by his deep love for God and His people. He is married to Sarah Johnson, and together, they have a thriving family dedicated to serving the Lord.</p>
+                    {% if pastor %}
+                    <h3 class="mb-3">{{ pastor.name }}</h3>
+                    <p class="lead text-primary mb-3">{{ pastor.title }}</p>
+                    <p class="mb-4">{{ pastor.bio }}</p>
+                    {% endif %}
                     <div class="pastor-quote">
                         <blockquote class="blockquote">
                             <p class="mb-2">"Our mission is to establish the kingdom of God here on earth through faithful service and unwavering commitment to His word."</p>
@@ -330,48 +254,24 @@
                 </div>
             </div>
             <div class="row">
+                {% for t in testimonials %}
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="testimonial-card">
                         <div class="testimonial-content">
-                            <p>"Since joining Grace SDA Church, my spiritual life has deepened significantly. The fellowship and biblical teaching have transformed my walk with God."</p>
+                            <p>"{{ t.message }}"</p>
                         </div>
                         <div class="testimonial-author">
-                            <img src="https://via.placeholder.com/60x60/003366/FFFFFF?text=SM" alt="Sarah Mitchell" class="rounded-circle me-3">
+                            {% if t.image %}
+                            <img src="{{ t.image }}" alt="{{ t.name }}" class="rounded-circle me-3" style="width:60px;height:60px;">
+                            {% endif %}
                             <div>
-                                <h6 class="mb-0">Sarah Mitchell</h6>
-                                <small class="text-muted">Member since 2019</small>
+                                <h6 class="mb-0">{{ t.name }}</h6>
+                                {% if t.since %}<small class="text-muted">Member since {{ t.since }}</small>{% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The youth ministry at Grace Church has been a blessing to my children. They've grown in their faith and made lifelong friendships."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <img src="https://via.placeholder.com/60x60/003366/FFFFFF?text=DM" alt="David Martinez" class="rounded-circle me-3">
-                            <div>
-                                <h6 class="mb-0">David Martinez</h6>
-                                <small class="text-muted">Member since 2018</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The community outreach programs have given me opportunities to serve others and share God's love in meaningful ways."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <img src="https://via.placeholder.com/60x60/003366/FFFFFF?text=LC" alt="Lisa Chen" class="rounded-circle me-3">
-                            <div>
-                                <h6 class="mb-0">Lisa Chen</h6>
-                                <small class="text-muted">Member since 2020</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
